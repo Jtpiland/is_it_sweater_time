@@ -54,7 +54,7 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:daily][0][:temp]).to be_a(Hash)
     expect(result[:daily][0][:temp]).to have_key(:max)
     expect(result[:daily][0][:temp][:max]).to be_a(Numeric)
-    expect(result[:daily][0][:temp]).to have_key(:max)
+    expect(result[:daily][0][:temp]).to have_key(:min)
     expect(result[:daily][0][:temp][:min]).to be_a(Numeric)
     expect(result[:daily][0]).to have_key(:weather)
     expect(result[:daily][0][:weather]).to be_a(Array)
@@ -62,9 +62,27 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:daily][0][:weather][0][:description]).to be_a(String)
     expect(result[:daily][0][:weather][0]).to have_key(:icon)
     expect(result[:daily][0][:weather][0][:icon]).to be_a(String)
+  end
 
+  it 'can return the hourly weather for the next hours (after request)', :vcr do
+    lat = 39.738453
+    lon = -104.984853
 
+    daily = WeatherService.get_weather("#{lat}", "#{lon}")
+    result = JSON.parse(daily.to_json, symbolize_names: true)
 
+    expect(result).to have_key(:hourly)
+    expect(result[:hourly]).to be_a(Array)
+    expect(result[:hourly][0]).to have_key(:dt)
+    expect(result[:hourly][0][:dt]).to be_a(Integer)
+    expect(result[:hourly][0]).to have_key(:temp)
+    expect(result[:hourly][0][:temp]).to be_a(Numeric)
+    expect(result[:daily][0]).to have_key(:weather)
+    expect(result[:hourly][0][:weather]).to be_a(Array)
+    expect(result[:hourly][0][:weather][0]).to have_key(:description)
+    expect(result[:hourly][0][:weather][0][:description]).to be_a(String)
+    expect(result[:hourly][0][:weather][0]).to have_key(:icon)
+    expect(result[:hourly][0][:weather][0][:icon]).to be_a(String)
   end
 
 end
