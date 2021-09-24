@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Location API', :vcr do
+RSpec.describe 'Mapquest API', :vcr do
   it 'can retrieve the latitude and longitude of the city' do
     location = 'denver,co'
 
