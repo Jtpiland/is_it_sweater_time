@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openweathermap.org/data/2.5/weather?appid=4c2d0d778c968cc65fbea5fe9cf02677&lat=39.738453&lon=-104.984853
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Fri, 24 Sep 2021 05:23:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '493'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?lat=39.74&lon=-104.98"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-104.9849,"lat":39.7385},"weather":[{"id":804,"main":"Clouds","description":"overcast
+        clouds","icon":"04n"}],"base":"stations","main":{"temp":289.15,"feels_like":287.72,"temp_min":284.7,"temp_max":292.81,"pressure":1022,"humidity":35},"visibility":10000,"wind":{"speed":0.45,"deg":355,"gust":0.89},"clouds":{"all":94},"dt":1632460981,"sys":{"type":2,"id":2004233,"country":"US","sunrise":1632401325,"sunset":1632444938},"timezone":-21600,"id":5419384,"name":"Denver","cod":200}'
+  recorded_at: Fri, 24 Sep 2021 05:23:02 GMT
+recorded_with: VCR 6.0.0
