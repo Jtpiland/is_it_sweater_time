@@ -16,7 +16,7 @@ class WeatherService
     end
 
     def parse_json(result)
-      formatted_result = JSON.parse(result.body, synmbolize_names: true)
+      formatted_result = JSON.parse(result.body, symbolize_names: true)
     end
   end
 end
