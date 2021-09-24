@@ -1,8 +1,8 @@
 class WeatherService
   class << self
-    def get_current_weather(lat, lon)
+    def get_weather(lat, lon)
 
-      result = conn.get("/data/2.5/weather") do |req|
+      result = conn.get("/data/2.5/onecall") do |req|
         req.params[:lat] = "#{lat}"
         req.params[:lon] = "#{lon}"
       end
