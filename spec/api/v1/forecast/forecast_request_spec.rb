@@ -70,4 +70,13 @@ RSpec.describe 'Forecast Request' do
     expect(@res[:data][:attributes][:hourly_weather][0]).to have_key(:icon)
     expect(@res[:data][:attributes][:hourly_weather][0][:icon]).to be_a(String)
   end
+
+  it 'doesnt return unnecessary keys', :vcr do
+    expect(@res[:data]).to_not have_key(:lat)
+    expect(@res[:data]).to_not have_key(:lon)
+    expect(@res[:data]).to_not have_key(:minutely)
+    expect(@res[:data]).to_not have_key(:timezone)
+    expect(@res[:data]).to_not have_key(:timezone_offset)
+    expect(@res[:data]).to_not have_key(:minutely)
+  end
 end
