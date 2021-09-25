@@ -1,4 +1,5 @@
 require 'rails_helper'
+require './lib/modules/api_key'
 
 RSpec.describe 'Registration Request' do
   # before :each do
@@ -8,7 +9,7 @@ RSpec.describe 'Registration Request' do
   # end
   describe 'POST /api/v1/users' do
     let(:valid_attributes) { { email: 'email', password: 'password', password_confirmation: 'password' } }
-    # headers = { "Content-Typer" => "application/json" }
+    # headers = { "Content-Type" => "application/json" }
 
     it 'can register and save a new user to the database', :vcr do
       headers = { "Content-Type" => "application/json",
@@ -18,10 +19,15 @@ RSpec.describe 'Registration Request' do
 
       # post "/api/v1/users", headers: headers, params: { email: 'email', password: 'password', password_confirmation: 'password' }
 
+      # post "/api/v1/users", headers: headers, request.body => valid_attributes
+
+      # body(JSON.generate({user: valid_attributes}))
+
       post "/api/v1/users", headers: headers, params: JSON.generate({user: valid_attributes})
 
       x = JSON.parse(response.body, symbolize_names: true)
 
+      expect(response.status).to eq(201)
       expect(User.all.length).to eq(1)
       expect(x).to be_a(Hash)
       expect(x).to have_key(:data)
