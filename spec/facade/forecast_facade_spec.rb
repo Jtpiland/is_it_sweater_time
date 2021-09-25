@@ -10,5 +10,4 @@ RSpec.describe ForecastFacade do
 
     expect(x).to eq(expected)
   end
-
 end
