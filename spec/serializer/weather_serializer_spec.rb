@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WeatherSerializer do
-  it 'can serializer data returned from the weather service', :vcr do
+  it 'can serialize data returned from the weather service', :vcr do
     lat = 39.738453
     lon = -104.984853
 
