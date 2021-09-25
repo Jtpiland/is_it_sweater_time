@@ -26,7 +26,6 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:current][:sunrise]).to be_a(Integer)
     expect(result[:current]).to have_key(:sunrise)
     expect(result[:current][:sunset]).to be_a(Integer)
-
     expect(result[:current]).to have_key(:weather)
     expect(result[:current][:weather]).to be_a(Array)
     expect(result[:current][:weather][0]).to have_key(:description)
@@ -35,7 +34,7 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:current][:weather][0][:icon]).to be_a(String)
   end
 
-  it 'can return the daily weather for the next 5 days by latitude and longitude', :vcr do
+  it 'can return the daily weather for the  by latitude and longitude (next 5 days***)', :vcr do
     lat = 39.738453
     lon = -104.984853
 
@@ -64,12 +63,12 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:daily][0][:weather][0][:icon]).to be_a(String)
   end
 
-  it 'can return the hourly weather for the next hours (after request)', :vcr do
+  it 'can return the hourly weather for the (next 8 hours after request**)', :vcr do
     lat = 39.738453
     lon = -104.984853
 
-    daily = WeatherService.get_weather("#{lat}", "#{lon}")
-    result = JSON.parse(daily.to_json, symbolize_names: true)
+    hourly = WeatherService.get_weather("#{lat}", "#{lon}")
+    result = JSON.parse(hourly.to_json, symbolize_names: true)
 
     expect(result).to have_key(:hourly)
     expect(result[:hourly]).to be_a(Array)
