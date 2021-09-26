@@ -6,10 +6,12 @@ RSpec.describe UserSerializer do
                         password: 'password',
                         password_confirmation: 'password')
 
+    user.api_key = User.set_api_key
+    user.save
+
     result = JSON.parse(user.to_json, symbolize_names: true)
     user_data = UserSerializer.user(result)
 
-    expect(user_data).to be_a(Hash)
     expect(user_data).to be_a(Hash)
     expect(user_data).to have_key(:data)
     expect(user_data[:data]).to be_a(Hash)
