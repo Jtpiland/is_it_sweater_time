@@ -5,11 +5,11 @@ class WeatherSerializer
         type: 'forecast',
         attributes: {
           current_weather: {
-            datetime: weather_data[:current][:dt],
-            sunrise: weather_data[:current][:sunrise],
-            sunset: weather_data[:current][:sunset],
-            temperature: weather_data[:current][:temp],
-            feels_like: weather_data[:current][:feels_like],
+            datetime: Time.at(weather_data[:current][:dt]).to_datetime,
+            sunrise: Time.at(weather_data[:current][:sunrise]).to_datetime,
+            sunset: Time.at(weather_data[:current][:sunset]).to_datetime,
+            temperature: (((weather_data[:current][:temp]) - 273.15)* 9/5 +32).round(2),
+            feels_like: (((weather_data[:current][:feels_like]) - 273.15)* 9/5 +32).round(2),
             humidity: weather_data[:current][:humidity],
             uvi: weather_data[:current][:uvi],
             visibility: weather_data[:current][:visibility],
@@ -18,99 +18,99 @@ class WeatherSerializer
           },
           daily_weather: [
             {
-              date: weather_data[:daily][0][:dt],
-              sunrise: weather_data[:daily][0][:sunrise],
-              sunset: weather_data[:daily][0][:sunset],
-              max_temp: weather_data[:daily][0][:temp][:max],
-              min_temp: weather_data[:daily][0][:temp][:min],
+              date: Time.at(weather_data[:daily][0][:dt]).to_datetime,
+              sunrise: Time.at(weather_data[:daily][0][:sunrise]).to_datetime,
+              sunset: Time.at(weather_data[:daily][0][:sunset]).to_datetime,
+              max_temp: (((weather_data[:daily][0][:temp][:max]) - 273.15)* 9/5 +32).round(2),
+              min_temp: (((weather_data[:daily][0][:temp][:min]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:daily][0][:weather][0][:description],
               icon: weather_data[:daily][0][:weather][0][:icon]
             },
             {
-              date: weather_data[:daily][1][:dt],
-              sunrise: weather_data[:daily][1][:sunrise],
-              sunset: weather_data[:daily][1][:sunset],
-              max_temp: weather_data[:daily][1][:temp][:max],
-              min_temp: weather_data[:daily][1][:temp][:min],
+              date: Time.at(weather_data[:daily][1][:dt]).to_datetime,
+              sunrise: Time.at(weather_data[:daily][1][:sunrise]).to_datetime,
+              sunset: Time.at(weather_data[:daily][1][:sunset]).to_datetime,
+              max_temp: (((weather_data[:daily][1][:temp][:max]) - 273.15)* 9/5 +32).round(2),
+              min_temp: (((weather_data[:daily][1][:temp][:min]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:daily][1][:weather][0][:description],
               icon: weather_data[:daily][1][:weather][0][:icon]
             },
             {
-              date: weather_data[:daily][2][:dt],
-              sunrise: weather_data[:daily][2][:sunrise],
-              sunset: weather_data[:daily][2][:sunset],
-              max_temp: weather_data[:daily][2][:temp][:max],
-              min_temp: weather_data[:daily][2][:temp][:min],
+              date: Time.at(weather_data[:daily][2][:dt]).to_datetime,
+              sunrise: Time.at(weather_data[:daily][2][:sunrise]).to_datetime,
+              sunset: Time.at(weather_data[:daily][2][:sunset]).to_datetime,
+              max_temp: (((weather_data[:daily][2][:temp][:max]) - 273.15)* 9/5 +32).round(2),
+              min_temp: (((weather_data[:daily][2][:temp][:min]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:daily][2][:weather][0][:description],
               icon: weather_data[:daily][2][:weather][0][:icon]
             },
             {
-              date: weather_data[:daily][3][:dt],
-              sunrise: weather_data[:daily][3][:sunrise],
-              sunset: weather_data[:daily][3][:sunset],
-              max_temp: weather_data[:daily][3][:temp][:max],
-              min_temp: weather_data[:daily][3][:temp][:min],
+              date: Time.at(weather_data[:daily][3][:dt]).to_datetime,
+              sunrise: Time.at(weather_data[:daily][3][:sunrise]).to_datetime,
+              sunset: Time.at(weather_data[:daily][3][:sunset]).to_datetime,
+              max_temp: (((weather_data[:daily][3][:temp][:max]) - 273.15)* 9/5 +32).round(2),
+              min_temp: (((weather_data[:daily][3][:temp][:min]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:daily][3][:weather][0][:description],
               icon: weather_data[:daily][3][:weather][0][:icon]
             },
             {
-              date: weather_data[:daily][4][:dt],
-              sunrise: weather_data[:daily][4][:sunrise],
-              sunset: weather_data[:daily][4][:sunset],
-              max_temp: weather_data[:daily][4][:temp][:max],
-              min_temp: weather_data[:daily][4][:temp][:min],
+              date: Time.at(weather_data[:daily][4][:dt]).to_datetime,
+              sunrise: Time.at(weather_data[:daily][4][:sunrise]).to_datetime,
+              sunset: Time.at(weather_data[:daily][4][:sunset]).to_datetime,
+              max_temp: (((weather_data[:daily][4][:temp][:max]) - 273.15)* 9/5 +32).round(2),
+              min_temp: (((weather_data[:daily][4][:temp][:min]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:daily][4][:weather][0][:description],
               icon: weather_data[:daily][4][:weather][0][:icon]
             }
           ],
           hourly_weather: [
             {
-              time: weather_data[:hourly][0][:dt],
-              temperature: weather_data[:hourly][0][:temp],
+              time: Time.at(weather_data[:hourly][0][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][0][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][0][:weather][0][:description],
-              icon: weather_data[:hourly][0][:weather][0][:icon],
+              icon: weather_data[:hourly][0][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][1][:dt],
-              temperature: weather_data[:hourly][1][:temp],
+              time: Time.at(weather_data[:hourly][1][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][1][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][1][:weather][0][:description],
-              icon: weather_data[:hourly][1][:weather][0][:icon],
+              icon: weather_data[:hourly][1][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][2][:dt],
-              temperature: weather_data[:hourly][2][:temp],
+              time: Time.at(weather_data[:hourly][2][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][2][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][2][:weather][0][:description],
-              icon: weather_data[:hourly][2][:weather][0][:icon],
+              icon: weather_data[:hourly][2][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][3][:dt],
-              temperature: weather_data[:hourly][3][:temp],
+              time: Time.at(weather_data[:hourly][3][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][3][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][3][:weather][0][:description],
-              icon: weather_data[:hourly][3][:weather][0][:icon],
+              icon: weather_data[:hourly][3][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][4][:dt],
-              temperature: weather_data[:hourly][4][:temp],
+              time: Time.at(weather_data[:hourly][4][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][4][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][4][:weather][0][:description],
-              icon: weather_data[:hourly][4][:weather][0][:icon],
+              icon: weather_data[:hourly][4][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][5][:dt],
-              temperature: weather_data[:hourly][5][:temp],
+              time: Time.at(weather_data[:hourly][5][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][5][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][5][:weather][0][:description],
-              icon: weather_data[:hourly][5][:weather][0][:icon],
+              icon: weather_data[:hourly][5][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][6][:dt],
-              temperature: weather_data[:hourly][6][:temp],
+              time: Time.at(weather_data[:hourly][6][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][6][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][6][:weather][0][:description],
-              icon: weather_data[:hourly][6][:weather][0][:icon],
+              icon: weather_data[:hourly][6][:weather][0][:icon]
             },
             {
-              time: weather_data[:hourly][7][:dt],
-              temperature: weather_data[:hourly][7][:temp],
+              time: Time.at(weather_data[:hourly][7][:dt]).to_datetime,
+              temperature: (((weather_data[:hourly][7][:temp]) - 273.15)* 9/5 +32).round(2),
               conditions: weather_data[:hourly][7][:weather][0][:description],
-              icon: weather_data[:hourly][7][:weather][0][:icon],
+              icon: weather_data[:hourly][7][:weather][0][:icon]
             }
           ]
         }

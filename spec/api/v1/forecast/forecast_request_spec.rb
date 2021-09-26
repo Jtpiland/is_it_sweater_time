@@ -8,7 +8,8 @@ RSpec.describe 'Forecast Request' do
   end
 
   it 'can return the forecast for a location (city, state)', :vcr do
-    expected = "{:data=>{:id=>nil, :type=>\"forecast\", :attributes=>{:current_weather=>{:datetime=>1632536600, :sunrise=>1632487781, :sunset=>1632531239, :temperature=>289.6, :feels_like=>288.4, :humidity=>42, :uvi=>0, :visibility=>10000, :conditions=>\"few clouds\", :icon=>\"02n\"}, :daily_weather=>[{:date=>1632506400, :sunrise=>1632487781, :sunset=>1632531239, :max_temp=>297.33, :min_temp=>288.92, :conditions=>\"few clouds\", :icon=>\"02d\"}, {:date=>1632592800, :sunrise=>1632574237, :sunset=>1632617539, :max_temp=>303.69, :min_temp=>288.4, :conditions=>\"clear sky\", :icon=>\"01d\"}, {:date=>1632679200, :sunrise=>1632660694, :sunset=>1632703840, :max_temp=>304.5, :min_temp=>290.95, :conditions=>\"clear sky\", :icon=>\"01d\"}, {:date=>1632765600, :sunrise=>1632747150, :sunset=>1632790142, :max_temp=>303.77, :min_temp=>292.59, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:date=>1632852000, :sunrise=>1632833607, :sunset=>1632876443, :max_temp=>300.18, :min_temp=>292.88, :conditions=>\"light rain\", :icon=>\"10d\"}], :hourly_weather=>[{:time=>1632535200, :temperature=>289.6, :conditions=>\"few clouds\", :icon=>\"02n\"}, {:time=>1632538800, :temperature=>290.25, :conditions=>\"few clouds\", :icon=>\"02n\"}, {:time=>1632542400, :temperature=>290.64, :conditions=>\"few clouds\", :icon=>\"02n\"}, {:time=>1632546000, :temperature=>290.9, :conditions=>\"few clouds\", :icon=>\"02n\"}, {:time=>1632549600, :temperature=>290.87, :conditions=>\"few clouds\", :icon=>\"02n\"}, {:time=>1632553200, :temperature=>290.7, :conditions=>\"clear sky\", :icon=>\"01n\"}, {:time=>1632556800, :temperature=>290.28, :conditions=>\"clear sky\", :icon=>\"01n\"}, {:time=>1632560400, :temperature=>289.76, :conditions=>\"clear sky\", :icon=>\"01n\"}]}}}"
+
+    expected =  "{:data=>{:id=>nil, :type=>\"forecast\", :attributes=>{:current_weather=>{:datetime=>\"2021-09-26T14:03:05.000-05:00\", :sunrise=>\"2021-09-26T07:51:34.000-05:00\", :sunset=>\"2021-09-26T19:50:40.000-05:00\", :temperature=>85.8, :feels_like=>82.49, :humidity=>15, :uvi=>6.26, :visibility=>10000, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, :daily_weather=>[{:date=>\"2021-09-26T13:00:00.000-05:00\", :sunrise=>\"2021-09-26T07:51:34.000-05:00\", :sunset=>\"2021-09-26T19:50:40.000-05:00\", :max_temp=>87.4, :min_temp=>64.0, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:date=>\"2021-09-27T13:00:00.000-05:00\", :sunrise=>\"2021-09-27T07:52:30.000-05:00\", :sunset=>\"2021-09-27T19:49:02.000-05:00\", :max_temp=>86.9, :min_temp=>67.01, :conditions=>\"overcast clouds\", :icon=>\"04d\"}, {:date=>\"2021-09-28T13:00:00.000-05:00\", :sunrise=>\"2021-09-28T07:53:27.000-05:00\", :sunset=>\"2021-09-28T19:47:23.000-05:00\", :max_temp=>80.89, :min_temp=>67.26, :conditions=>\"overcast clouds\", :icon=>\"04d\"}, {:date=>\"2021-09-29T13:00:00.000-05:00\", :sunrise=>\"2021-09-29T07:54:24.000-05:00\", :sunset=>\"2021-09-29T19:45:45.000-05:00\", :max_temp=>70.59, :min_temp=>53.67, :conditions=>\"moderate rain\", :icon=>\"10d\"}, {:date=>\"2021-09-30T13:00:00.000-05:00\", :sunrise=>\"2021-09-30T07:55:21.000-05:00\", :sunset=>\"2021-09-30T19:44:07.000-05:00\", :max_temp=>66.85, :min_temp=>51.35, :conditions=>\"light rain\", :icon=>\"10d\"}], :hourly_weather=>[{:time=>\"2021-09-26T14:00:00.000-05:00\", :temperature=>85.8, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:time=>\"2021-09-26T15:00:00.000-05:00\", :temperature=>86.14, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:time=>\"2021-09-26T16:00:00.000-05:00\", :temperature=>86.72, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:time=>\"2021-09-26T17:00:00.000-05:00\", :temperature=>87.19, :conditions=>\"few clouds\", :icon=>\"02d\"}, {:time=>\"2021-09-26T18:00:00.000-05:00\", :temperature=>87.4, :conditions=>\"few clouds\", :icon=>\"02d\"}, {:time=>\"2021-09-26T19:00:00.000-05:00\", :temperature=>86.25, :conditions=>\"scattered clouds\", :icon=>\"03d\"}, {:time=>\"2021-09-26T20:00:00.000-05:00\", :temperature=>82.02, :conditions=>\"overcast clouds\", :icon=>\"04n\"}, {:time=>\"2021-09-26T21:00:00.000-05:00\", :temperature=>79.2, :conditions=>\"overcast clouds\", :icon=>\"04n\"}]}}}"
 
     expect(@res.to_s).to eq(expected)
     expect(@res).to be_a(Hash)
@@ -22,11 +23,11 @@ RSpec.describe 'Forecast Request' do
     expect(@res[:data][:attributes]).to have_key(:current_weather)
     expect(@res[:data][:attributes][:current_weather]).to be_a(Hash)
     expect(@res[:data][:attributes][:current_weather]).to have_key(:datetime)
-    expect(@res[:data][:attributes][:current_weather][:datetime]).to be_a(Integer)
+    expect(@res[:data][:attributes][:current_weather][:datetime]).to be_a(String)
     expect(@res[:data][:attributes][:current_weather]).to have_key(:sunrise)
-    expect(@res[:data][:attributes][:current_weather][:sunrise]).to be_a(Integer)
+    expect(@res[:data][:attributes][:current_weather][:sunrise]).to be_a(String)
     expect(@res[:data][:attributes][:current_weather]).to have_key(:sunset)
-    expect(@res[:data][:attributes][:current_weather][:sunset]).to be_a(Integer)
+    expect(@res[:data][:attributes][:current_weather][:sunset]).to be_a(String)
     expect(@res[:data][:attributes][:current_weather]).to have_key(:temperature)
     expect(@res[:data][:attributes][:current_weather][:temperature]).to be_a(Numeric)
     expect(@res[:data][:attributes][:current_weather]).to have_key(:feels_like)
@@ -44,11 +45,11 @@ RSpec.describe 'Forecast Request' do
     expect(@res[:data][:attributes][:daily_weather]).to be_a(Array)
     expect(@res[:data][:attributes][:daily_weather].length).to eq(5)
     expect(@res[:data][:attributes][:daily_weather][0]).to have_key(:date)
-    expect(@res[:data][:attributes][:daily_weather][0][:date]).to be_a(Integer)
+    expect(@res[:data][:attributes][:daily_weather][0][:date]).to be_a(String)
     expect(@res[:data][:attributes][:daily_weather][0]).to have_key(:sunrise)
-    expect(@res[:data][:attributes][:daily_weather][0][:sunrise]).to be_a(Integer)
+    expect(@res[:data][:attributes][:daily_weather][0][:sunrise]).to be_a(String)
     expect(@res[:data][:attributes][:daily_weather][0]).to have_key(:sunset)
-    expect(@res[:data][:attributes][:daily_weather][0][:sunset]).to be_a(Integer)
+    expect(@res[:data][:attributes][:daily_weather][0][:sunset]).to be_a(String)
     expect(@res[:data][:attributes][:daily_weather][0]).to have_key(:max_temp)
     expect(@res[:data][:attributes][:daily_weather][0][:max_temp]).to be_a(Numeric)
     expect(@res[:data][:attributes][:daily_weather][0]).to have_key(:min_temp)
@@ -62,7 +63,7 @@ RSpec.describe 'Forecast Request' do
     expect(@res[:data][:attributes][:hourly_weather]).to be_a(Array)
     expect(@res[:data][:attributes][:hourly_weather].length).to eq(8)
     expect(@res[:data][:attributes][:hourly_weather][0]).to have_key(:time)
-    expect(@res[:data][:attributes][:hourly_weather][0][:time]).to be_a(Integer)
+    expect(@res[:data][:attributes][:hourly_weather][0][:time]).to be_a(String)
     expect(@res[:data][:attributes][:hourly_weather][0]).to have_key(:temperature)
     expect(@res[:data][:attributes][:hourly_weather][0][:temperature]).to be_a(Numeric)
     expect(@res[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)

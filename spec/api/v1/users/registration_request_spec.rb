@@ -8,7 +8,7 @@ RSpec.describe 'Registration Request' do
   #   x = JSON.parse(response.body, symbolize_names: true)
   # end
   describe 'POST /api/v1/users' do
-    let(:valid_attributes) { { email: 'email', password: 'password', password_confirmation: 'password' } }
+    let(:valid_attributes) { { 'email': 'email', 'password': 'password', 'password_confirmation': 'password' } }
     # headers = { "Content-Type" => "application/json" }
 
     it 'can register and save a new user to the database', :vcr do
@@ -23,7 +23,7 @@ RSpec.describe 'Registration Request' do
 
       # body(JSON.generate({user: valid_attributes}))
 
-      post "/api/v1/users", headers: headers, params: JSON.generate({user: valid_attributes})
+      post "/api/v1/users", headers: headers, params: JSON.generate(valid_attributes)
 
       x = JSON.parse(response.body, symbolize_names: true)
 
