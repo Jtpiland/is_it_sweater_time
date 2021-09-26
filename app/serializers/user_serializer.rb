@@ -5,7 +5,7 @@ class UserSerializer
         type: 'user',
         attributes: {
           email: user_data[:email],
-          api_key: 'example'
+          api_key: user_data[:api_key]
         }
       }
     }
