@@ -78,6 +78,5 @@ RSpec.describe 'Forecast Request' do
     expect(@res[:data]).to_not have_key(:minutely)
     expect(@res[:data]).to_not have_key(:timezone)
     expect(@res[:data]).to_not have_key(:timezone_offset)
-    expect(@res[:data]).to_not have_key(:minutely)
   end
 end
