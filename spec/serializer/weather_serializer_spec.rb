@@ -6,9 +6,21 @@ RSpec.describe WeatherSerializer do
     lon = -104.984853
 
     weather = WeatherService.get_weather("#{lat}", "#{lon}")
-    result = JSON.parse(weather.to_json, symbolize_names: true)
+    # result = JSON.parse(weather.to_json, symbolize_names: true)
 
-    weather_data = WeatherSerializer.weather(result)
+    current_weather = CurrentWeather.new(weather[:current])
+
+    daily_weather =     weather[:daily][0..4].map do |daily|
+                          DailyWeather.new(daily)
+                        end
+
+    hourly_weather =    weather[:hourly][0..7].map do |hourly|
+                          HourlyWeather.new(hourly)
+                        end
+
+    forecast = Forecast.new(current_weather, daily_weather, hourly_weather)
+
+    weather_data = WeatherSerializer.weather(forecast) #was result
 
     expect(weather_data).to be_a(Hash)
     expect(weather_data).to have_key(:data)
