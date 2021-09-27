@@ -10,7 +10,6 @@ RSpec.describe 'BookSearchFacade' do
     x = BookSearchFacade.fetch_books(location, quantity).to_s
 
     expect(x).to eq(expected)
-
   end
 
 end
