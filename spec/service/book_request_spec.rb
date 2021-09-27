@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'BookService' do
-  it 'can return information from the Open Library Search API' do
-    location = 'denver, co'
+  it 'can return information from the Open Library Search API', :vcr do
+    location = 'denver,co'
 
     books = BookService.get_books(location)
 
@@ -15,7 +15,7 @@ RSpec.describe 'BookService' do
     expect(books[:docs][0][:isbn][0]).to be_a(String)
     expect(books[:docs][0]).to have_key(:title)
     expect(books[:docs][0][:title]).to be_a(String)
-    expect(books[:docs[0]]).to have_key(:publisher)
+    expect(books[:docs][0]).to have_key(:publisher)
     expect(books[:docs][0][:publisher]).to be_a(Array)
     expect(books[:docs][0][:publisher][0]).to be_a(String)
   end
