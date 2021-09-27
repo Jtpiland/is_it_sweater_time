@@ -5,7 +5,7 @@ RSpec.describe 'Book Search Request' do
     location = 'denver, co'
     quantity = 5
 
-    get '/api/v1/book_search', params: { location: location }
+    get '/api/v1/book-search', params: { location: location }
 
     result = JSON.parse(response.body, symbolize_names: true)
 
