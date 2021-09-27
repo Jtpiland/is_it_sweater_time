@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'BookSearchSerializer' do
   it 'can serialize data returned from the book service and weather service', :vcr do
     location = 'denver, co'
-
+    
     result = MapquestService.get_location(location)
     lat = result[:locations][0][:latLng][:lat]
     lon = result[:locations][0][:latLng][:lng]
@@ -16,7 +16,7 @@ RSpec.describe 'BookSearchSerializer' do
     book_search = BookSearch.new(current_weather, books)
 
     book_search_data = BookSearchSerializer.book_search(book_search, location)
-    require "pry"; binding.pry
+
     expect(book_search_data).to be_a(Hash)
     expect(book_search_data).to have_key(:data)
     expect(book_search_data[:data]).to be_a(Hash)
