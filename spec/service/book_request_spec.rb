@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe 'BookService' do
   it 'can return information from the Open Library Search API', :vcr do
     location = 'denver,co'
+    quantity = 5
 
-    books = BookService.get_books(location)
+    books = BookService.get_books(location, quantity)
 
     expect(books).to be_a(Hash)
     expect(books).to have_key(:numFound)

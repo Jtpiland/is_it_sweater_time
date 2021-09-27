@@ -1,8 +1,9 @@
 class BookService
   class << self
-    def get_books(location)
+    def get_books(location, quantity)
       result = conn.get("/search.json?") do |req|
         req.params['q'] = "#{location}"
+        req.params['limit'] = "#{quantity}"
       end
       parse_json(result)
     end
