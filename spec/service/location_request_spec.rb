@@ -15,4 +15,15 @@ RSpec.describe 'Mapquest API', :vcr do
     expect(location[:locations][0][:latLng]).to have_key(:lng)
     expect(location[:locations][0][:latLng][:lng]).to be_a(Float)
   end
+
+  it 'can retrieve the directions between two cities' do
+    from = 'denver, co'
+    to = 'estes park, co'
+
+    directions = MapquestService.get_directions(from, to)
+
+    expect(directions).to have_key(:route)
+    expect(directions[:route]).to have_key(:formattedTime)
+    expect(directions[:route][:formattedTime]).to be_a(String)
+  end
 end
