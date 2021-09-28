@@ -13,9 +13,10 @@ RSpec.describe 'RoadTrip' do
 
     x = HourlyWeather.new(weather)
 
-    directions = {
+    directions = { route: {
       formattedTime: '01:22:49'
-    }
+        }
+      }
 
     y = Directions.new(directions)
 

@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Directions poro' do
   it 'exists and has attributes' do
-    directions = {
+    directions = {route: {
       formattedTime: '01:22:49'
     }
+  }
 
     x = Directions.new(directions)
 

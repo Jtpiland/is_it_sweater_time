@@ -16,10 +16,10 @@ RSpec.describe 'RoadTripSerializer' do
 
     hourly_weather = HourlyWeather.new(weather)
 
-    d = {
+    d = { route: {
       formattedTime: '01:22:49'
-    }
-
+        }
+      }
     directions = Directions.new(d)
 
     road_trip = RoadTrip.new(hourly_weather, directions)
