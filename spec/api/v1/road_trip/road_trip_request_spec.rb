@@ -12,7 +12,7 @@ RSpec.describe 'Road Trip Request' do
     post '/api/v1/road_trip', headers: headers, params: JSON.generate(valid_attributes)
 
     x = JSON.parse(response.body, symbolize_names: true)
-    require "pry"; binding.pry
-  end
 
+    expect(response).to be_successful
+  end
 end
