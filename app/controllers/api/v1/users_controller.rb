@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
 # skip_before_action :authorized?
 
   def create
-    user = User.create(user_params)
+    user = User.create!(user_params)
     user.api_key = User.set_api_key
     # session[:user_id] = user.id
     user.save
