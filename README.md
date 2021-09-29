@@ -1,30 +1,30 @@
 <!-- PROJECT INFO -->
 <h1 align="center">
   <br>
-  <a href="https://github.com/marlitas/ArtspirationBE">
-    <img src="https://user-images.githubusercontent.com/80797707/133871214-025c2c08-a269-470d-97a3-31aa34a2cabe.jpg" alt="Logo" width="200" height="200"></a>
+  <a href="https://github.com/Jtpiland/is_it_sweater_time">
+    <img src="https://images.squarespace-cdn.com/content/v1/5b788d28697a98e17a6d4c7a/1603738009211-QNL5MOX36PX11ZA32ZFM/unnamed.gif" alt="Logo" width="200" height="200"></a>
   <br>
   Is It Sweater Time? API
   <br>
 </h1>
 
-<h4 align="center">The backend portion of an application to find weather forecast!</h4>
+<h4 align="center">The backend portion of an application built to find weather forecasts!</h4>
 
 <p align="center">
-  <a href="https://github.com/marlitas/ArtspirationBE/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/marlitas/ArtspirationBE?style=for-the-badge" alt="contributors_badge">
+  <a href="https://github.com/Jtpiland/is_it_sweater_time/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="contributors_badge">
   </a>
-  <a href="https://github.com/marlitas/ArtspirationBE/network/members">
-    <img src="https://img.shields.io/github/forks/marlitas/ArtspirationBE?style=for-the-badge" alt="forks_badge">
+  <a href="https://github.com/Jtpiland/is_it_sweater_time/network/members">
+    <img src="https://img.shields.io/github/forks/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="forks_badge">
   </a>
-  <a href="https://github.com/marlitas/ArtspirationBE/stargazers">
-    <img src="https://img.shields.io/github/stars/marlitas/ArtspirationBE?style=for-the-badge" alt="stars_badge">
+  <a href="https://github.com/Jtpiland/is_it_sweater_time/stargazers">
+    <img src="https://img.shields.io/github/stars/Jtpiland/is_it_sweater_timestyle=for-the-badge" alt="stars_badge">
   </a>
-  <a href="https://github.com/marlitas/ArtspirationBE/issues">
-    <img src="https://img.shields.io/github/issues/marlitas/ArtspirationBE?style=for-the-badge" alt="issues_badge">
+  <a href="https://github.com/Jtpiland/is_it_sweater_time/issues">
+    <img src="https://img.shields.io/github/issues/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="issues_badge">
   </a>
   <a href="">
-    <img src="https://img.shields.io/travis/com/marlitas/ArtspirationBE?style=for-the-badge" alt="build_badge">
+    <img src="https://img.shields.io/travis/com/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="build_badge">
   </a>
 
 <!-- CONTENTS -->
@@ -41,31 +41,23 @@
 
 ## About The Project
 
-The backend of Artspiration consumes the Artsy API and Google Cloud Vision API to power a recommendation engine that connects users with exciting artwork based on their preferences. We expose endpoints that package up this material for frontend consumption to display to our users as a web application.
+The backend of Is It Sweater Time? consumes the MapQuest API, OpenWeather API, and Unsplash API to power an application that can retrieve current, hourly and daily weather forecasts based on a city search. It also allows users to plan a road trip where they can find out the total travel time as well as what the weather will be like at their estimated time of arrival. We expose endpoints that package up this material for frontend consumption to display to users on the web.
 
 ### Learning Goals
 
 - Using an Agile process throughout development
-- Setting up continuous integration and continous deployment
-- Using project management tool Github Project
-- Demoing project ot project manager
 - Building a backend API for frontend consumption
 - Consuming endpoints and manipulating the JSON responses
-- Handling large group dynamics with short 3 day sprints
-- Working with Machine Learning outputs and implementing into app
-- Consuming Google Cloud Vision API
 
 ## Tools Used
 
-| Development |  Testing   |      Gems       |
-| :---------: | :--------: | :-------------: |
-| Ruby 2.7.2  |   RSpec    |       Pry       |
-| Rails 5.2.5 |  WebMock   | ShouldaMatchers |
-|    JSON     |    VCR     |     Faraday     |
-|    Atom     | SimpleCov  |     Figaro      |
-|   Github    | FactoryBot |    FastJSON     |
-|  TravisCI   |   Faker    |                 |
-|   Heroku    |            |                 |
+| Development |  Testing  |      Gems       |
+| :---------: | :-------: | :-------------: |
+| Ruby 2.7.2  |   RSpec   |       Pry       |
+| Rails 5.2.5 |  WebMock  | ShouldaMatchers |
+|    JSON     |    VCR    |     Faraday     |
+|    Atom     | SimpleCov |     Figaro      |
+|   Github    |           |    FastJSON     |
 
 ## Set Up
 
@@ -133,100 +125,246 @@ The Is It Sweater Time? API can be used to retrieve information about current, d
 
 ### Endpoint Documentation
 
-[User Endpoint](https://peaceful-reef-61917.herokuapp.com/api/v1/users/133)
+[Register User Endpoint](localhost:3000/api/v1/users)
 <br>
 Request:
-`/api/v1/users/:id`
+`/api/v1/users`
+
+Body:
+
+```json
+{
+  "email": "funbucket1@gmail.com",
+  "password": "pw",
+  "password_confirmation": "pw"
+}
+```
 
 Response:
 
 ```json
 {
   "data": {
-    "id": "133",
+    "id": 4,
     "type": "user",
     "attributes": {
-      "name": "Melanie Swaniawski",
-      "email": "shameka_goyette@bartell.co"
+      "email": "funbucket1@gmail.com",
+      "api_key": "yQprkFUOta0hFf6iWvNw7Qtt"
     }
   }
 }
 ```
 
-[Recommeded Art Endpoint](https://peaceful-reef-61917.herokuapp.com/api/v1/users/133/recommendations)
+[Session Endpoint](localhost:3000/api/v1/sessions)
 <br>
 Request:
-`/api/v1/users/:id/recommendations`
-
-Response:
+`/api/v1/sessions`
 
 ```json
+
+Body:
+
 {
-  "data": [
-    {
-      "id": 168,
-      "type": "recommended_art",
-      "attributes": {
-        "title": "Virgin of the Rocks",
-        "image": "https://d32dm0rphc51dk.cloudfront.net/Jv-e1fhDjg61OYhhsMoiQg/{image_version}.jpg",
-        "user_id": 133
-      }
-    }
-  ]
+  "email": "funbucket1@gmail.com",
+  "password": "pw"
 }
 ```
-
-[Rated Art Index Endpoint](https://peaceful-reef-61917.herokuapp.com/api/v1/users/133/rated_arts)
-<br>
-Request:
-`/api/v1/users/:id/rated_arts`
-
-Response:
-
-```json
-{
-  "data": [
-    {
-      "id": 175,
-      "type": "rated_art",
-      "attributes": {
-        "title": "La Grande Odalisque",
-        "image": "https://d32dm0rphc51dk.cloudfront.net/crVj8GvGliFrpExNfHWl4Q/medium.jpg",
-        "liked": true,
-        "user_id": 145
-      }
-    },
-    {
-      "id": 184,
-      "type": "rated_art",
-      "attributes": {
-        "title": "L'Embarquement pour Cythère (The Embarkation for Cythera)",
-        "image": "https://d32dm0rphc51dk.cloudfront.net/Ux_L_UKjxgR-gJ6XZYVgVg/medium.jpg",
-        "liked": true,
-        "user_id": 145
-      }
-    }
-  ]
-}
-```
-
-[Rated Art Show Endpoint](https://peaceful-reef-61917.herokuapp.com/api/v1/users/145/rated_arts/174)
-<br>
-Request:
-`/api/v1/users/:id/rated_arts/:art_id`
 
 Response:
 
 ```json
 {
   "data": {
-    "id": 106,
-    "type": "rated_art",
+    "id": 4,
+    "type": "users",
     "attributes": {
-      "title": "The Tête à Tête",
-      "image": "https://d32dm0rphc51dk.cloudfront.net/5KJ7_u7BPqeltkfEnyijIw/medium.jpg",
-      "liked": true,
-      "user_id": 145
+      "email": "funbucket1@gmail.com",
+      "api_key": "yQprkFUOta0hFf6iWvNw7Qtt"
+    }
+  }
+}
+```
+
+[Background Image Endpoint](localhost:3000/api/v1/backgrounds)
+<br>
+Request:
+`/api/v1/backgrounds`<br>
+`query = 'denver, co'`
+
+Response:
+
+```json
+{
+  "data": {
+    "id": null,
+    "type": "image",
+    "attributes": {
+      "image": {
+        "location": "denver, co",
+        "image_url": "https://images.unsplash.com/photo-1619856699906-09e1f58c98b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjI5OTB8MHwxfHNlYXJjaHwxfHxkZW52ZXIlMkMlMjBjb3xlbnwwfHx8fDE2MzI4NTYxODI&ixlib=rb-1.2.1&q=80&w=1080",
+        "credit": {
+          "source": "unsplash.com",
+          "author": "Ryan De Hamer",
+          "logo": "https://unsplash.com/blog/content/images/max/2560/1-VnKoValwGK3-d1bZhD6sVA.jpeg"
+        }
+      }
+    }
+  }
+}
+```
+
+[Forecast Endpoint](localhost:3000/api/v1/forecast)
+<br>
+Request:
+`/api/v1/forecast` <br>
+`location= 'denver, co'`
+
+Response:
+
+```json
+{
+  "data": {
+    "id": null,
+    "type": "forecast",
+    "attributes": {
+      "current_weather": {
+        "datetime": "2021-09-28T14:09:49.000-05:00",
+        "sunrise": "2021-09-28T07:53:27.000-05:00",
+        "sunset": "2021-09-28T19:47:23.000-05:00",
+        "temperature": 79.43,
+        "feels_like": 79.43,
+        "humidity": 24,
+        "uvi": 5.75,
+        "visibility": 10000,
+        "conditions": "scattered clouds",
+        "icon": "03d"
+      },
+      "hourly_weather": [
+        {
+          "time": "2021-09-28T14:00:00.000-05:00",
+          "temperature": 79.43,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T15:00:00.000-05:00",
+          "temperature": 79.66,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T16:00:00.000-05:00",
+          "temperature": 79.81,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T17:00:00.000-05:00",
+          "temperature": 79.59,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T18:00:00.000-05:00",
+          "temperature": 78.75,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T19:00:00.000-05:00",
+          "temperature": 77.18,
+          "conditions": "scattered clouds",
+          "icon": "03d"
+        },
+        {
+          "time": "2021-09-28T20:00:00.000-05:00",
+          "temperature": 70.38,
+          "conditions": "overcast clouds",
+          "icon": "04n"
+        },
+        {
+          "time": "2021-09-28T21:00:00.000-05:00",
+          "temperature": 68.92,
+          "conditions": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "daily_weather": [
+        {
+          "date": "2021-09-28T13:00:00.000-05:00",
+          "sunrise": "2021-09-28T07:53:27.000-05:00",
+          "sunset": "2021-09-28T19:47:23.000-05:00",
+          "max_temp": 79.81,
+          "min_temp": 66.81,
+          "conditions": "light rain",
+          "icon": "10d"
+        },
+        {
+          "date": "2021-09-29T13:00:00.000-05:00",
+          "sunrise": "2021-09-29T07:54:24.000-05:00",
+          "sunset": "2021-09-29T19:45:45.000-05:00",
+          "max_temp": 71.64,
+          "min_temp": 51.89,
+          "conditions": "heavy intensity rain",
+          "icon": "10d"
+        },
+        {
+          "date": "2021-09-30T13:00:00.000-05:00",
+          "sunrise": "2021-09-30T07:55:21.000-05:00",
+          "sunset": "2021-09-30T19:44:07.000-05:00",
+          "max_temp": 60.91,
+          "min_temp": 50.45,
+          "conditions": "moderate rain",
+          "icon": "10d"
+        },
+        {
+          "date": "2021-10-01T13:00:00.000-05:00",
+          "sunrise": "2021-10-01T07:56:19.000-05:00",
+          "sunset": "2021-10-01T19:42:29.000-05:00",
+          "max_temp": 69.57,
+          "min_temp": 53.56,
+          "conditions": "few clouds",
+          "icon": "02d"
+        },
+        {
+          "date": "2021-10-02T13:00:00.000-05:00",
+          "sunrise": "2021-10-02T07:57:16.000-05:00",
+          "sunset": "2021-10-02T19:40:52.000-05:00",
+          "max_temp": 72.86,
+          "min_temp": 57.49,
+          "conditions": "clear sky",
+          "icon": "01d"
+        }
+      ]
+    }
+  }
+}
+```
+
+[Road Trip Endpoint](localhost:3000/api/v1/road_trip)
+<br>
+Request:
+`/api/v1/backgrounds`<br>
+
+Body:
+
+`{ "origin": "Denver,CO", "destination": "Pueblo,CO", "api_key": "Azwypen9hAv374lsE3LCnwtt" }`
+
+Response:
+
+```json
+{
+  "data": {
+    "id": null,
+    "type": "roadtrip",
+    "attributes": {
+      "start_city": "Denver,CO",
+      "end_city": "Pueblo,CO",
+      "travel_time": "01:44:22",
+      "weather_at_eta": {
+        "temperature": 77.99,
+        "conditions": "few clouds"
+      }
     }
   }
 }
