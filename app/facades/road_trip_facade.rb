@@ -13,8 +13,12 @@ class RoadTripFacade
                           HourlyWeather.new(hourly)
                         end
 
-    road_trip = RoadTrip.new(hourly_weather[directions.travel_time.split(':').first.to_i], directions)
+    if directions.travel_time == nil
+      RoadTripSerializer.impossible_road_trip(from, to)
+    else
+      road_trip = RoadTrip.new(hourly_weather[directions.travel_time.split(':').first.to_i], directions)
 
-    RoadTripSerializer.road_trip(road_trip, from, to)
+      RoadTripSerializer.road_trip(road_trip, from, to)
+    end
   end
 end
