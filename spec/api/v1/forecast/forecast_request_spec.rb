@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Forecast Request' do
   before :each do
     location = 'denver, co'
-    get "/api/v1/forecast", params: { location: location }#, headers: { Content-Type: application/json}
+    get "/api/v1/forecast", params: { location: location }
     @res = JSON.parse(response.body, symbolize_names: true)
   end
 
