@@ -83,5 +83,4 @@ RSpec.describe 'OpenWeather Api' do
     expect(result[:hourly][0][:weather][0]).to have_key(:icon)
     expect(result[:hourly][0][:weather][0][:icon]).to be_a(String)
   end
-
 end
