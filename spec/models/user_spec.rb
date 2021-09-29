@@ -12,6 +12,7 @@ RSpec.describe User do
       user = User.create( email: 'funbucket@gmail.com',
                           password: 'password',
                           password_confirmation: 'password')
+                          
       expect(user).to be_an_instance_of(User)
       expect(User.all.length).to eq(1)
     end
