@@ -4,10 +4,10 @@ RSpec.describe 'Sessions' do
   before :each do
     @user = User.create(email: 'funbucket@gmail.com', password: 'pw', password_confirmation: 'pw')
 
-    @user.api_key = User.set_api_key
+    @user.api_key = "3uFitIdcdeGCl4zmpUAshwtt"
     @user.save
   end
-  
+
   describe 'POST /api/v1/users' do
     let(:valid_attributes) { { 'email': 'funbucket@gmail.com', 'password': 'pw'} }
 
@@ -15,7 +15,7 @@ RSpec.describe 'Sessions' do
 
     let(:invalid_password) { { 'email': 'funbucket@gmail.com', 'password': 'p'} }
 
-    it 'can create a session with valid credentials', :vcr do
+    it 'can create a session with valid credentials' do
       headers = { "Content-Type" => "application/json",
       "Accept" => "application/json" }
 
@@ -25,21 +25,13 @@ RSpec.describe 'Sessions' do
 
       expect(response.status).to eq(200)
       expect(x).to be_a(Hash)
-      expect(x).to have_key(:data)
-      expect(x[:data]).to be_a(Hash)
-      expect(x[:data]).to have_key(:type)
-      expect(x[:data][:type]).to be_a(String)
-      expect(x[:data]).to have_key(:id)
       expect(x[:data][:id]).to be_a(Integer)
-      expect(x[:data]).to have_key(:attributes)
-      expect(x[:data][:attributes]).to be_a(Hash)
-      expect(x[:data][:attributes]).to have_key(:email)
-      expect(x[:data][:attributes][:email]).to be_a(String)
-      expect(x[:data][:attributes]).to have_key(:api_key)
-      expect(x[:data][:attributes][:api_key]).to be_a(String)
+      expect(x[:data][:type]).to eq('users')
+      expect(x[:data][:attributes][:email]).to eq("funbucket@gmail.com")
+      expect(x[:data][:attributes][:api_key]).to eq("3uFitIdcdeGCl4zmpUAshwtt")
     end
 
-    it 'can send an error message if an account has not been created', :vcr do
+    it 'can send an error message if an account has not been created' do
       headers = { "Content-Type" => "application/json",
       "Accept" => "application/json" }
 
@@ -55,7 +47,7 @@ RSpec.describe 'Sessions' do
       expect(x[:data][:error]).to eq("Please create an account.")
     end
 
-    it 'can send an error message if given invalid credentials', :vcr do
+    it 'can send an error message if given invalid credentials'do
       headers = { "Content-Type" => "application/json",
       "Accept" => "application/json" }
 

@@ -18,6 +18,5 @@ class ImageService
     def parse_json(result)
       foramtted_result = JSON.parse(result.body, symbolize_names: true)
     end
-
   end
 end
