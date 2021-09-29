@@ -6,7 +6,6 @@ RSpec.describe WeatherSerializer do
     lon = -104.984853
 
     weather = WeatherService.get_weather("#{lat}", "#{lon}")
-    # result = JSON.parse(weather.to_json, symbolize_names: true)
 
     current_weather = CurrentWeather.new(weather[:current])
 
