@@ -108,7 +108,7 @@ gem install rails --version 5.2.5
    bundle exec figaro install
    ```
 8. Enter your API KEYS in `application.yml`
-   ```ruby
+   ```
    weather_key = <ENTER YOUR API KEY>
    map_key = <ENTER YOUR API KEY>
    image_access_key = <ENTER YOUR API KEY>
