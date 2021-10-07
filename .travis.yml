@@ -3,11 +3,11 @@ rvm:
   - 2.7.2
 before_install:
   - gem install bundler
-  - VCR.turn_off!(:ignore_cassettes => true)
 addons:
   postgresql: 9.6
 script:
   - bundle exec rails db:{create,migrate} RAILS_ENV=test
+  - VCR.turn_off!
   - bundle exec rspec
 app: is-it-sweater-weather
 true:
@@ -17,5 +17,10 @@ env:
   global:
     secure: mWCxDLz1NGWdNty+Th21DXt7w88pDGvtzO94mL/en9Bej5+ayQI7haWunGBNiWpaSQUekNISbHKbOs1fcvpwO6LinaE2dNx8PTgLowSAzc7tAXtidpkm1nk7TJbItppsqX4W5JCfcb/OgxvrscW20hKvUeqa7eLZxfkEZ36xm1StysAWXSE36kkdVd4dDBkZEUDXW3urWLQU8wb8N10KMIrUF5wCxtBeYhI2XLBeiEhyxgTgR1V24PrlFQ7nGytWTwF9OZFzb6rp9rQ498MNfBBy+QmDiv2tcsOqrmFSAGWxcoFFbtnyrXhVRlKm9mHS5TMTq2oUETivcFB97untG5IrW3CsMgrCQluUt1T8b0BUboO2bZgzpAzHl0oC0pGH4o3LZ39NM4bGlYJpP27xTnLAqEyuFPZx3ad1BHDucQ15RdrIKIwEfB+bhFfV/acFJ0rwxl7k3/7Wp1OGPq5p7jYraQru+/oUMi8XAsDv1ftdpjTzJv6CrJHAF0Obwprv8YR1dr3UKjhYFtrcsKK4BCu5iGSmB7Gt3F+gkF+pJ4HFQ+Qx9i1UA2+2X+MKwfLwEHTTsyiCPp/PsCfDU9oA3pFSYPfDKRmh4M+zUzz2aH3xVy3sO9H9kmUVhDnC08TsoR78YRKxsEXY0iTvSWHEtYgrg05EGMdqtb80A4nD0ac=
 deploy:
+  provider: heroku
   api_key:
     secure: wTmS8S05JFNamzXiFJmFdD+ISN/r9PdjMC9Ru8e5h4GKcu/A6jZzfUYhFJzZABTPRcFGhwBHv12zYRSpt5H4l3kXdz0ptUJR5QMrU4h4x8Y/bcK0t/jyAHcn/d3zpylsQVM+gwglkyQHPNFTasGn9tsyQmpllrOC6AdbTrslHUO6hnb0G+YAYCjXozeYvETLM/xfEhWdO44UVK9inQd7kfzbzT/6Y832Po3003ls1jV+0DzGDA6PIPGrf3cjN+Kr2IHEZgXEnuPVnXxsL03AICBHVSx34LV8LOIJUVCsSnaE/CIZce2WVKDvtoJ2RUK99+BAyDwmpswmJidbQvxFm/7qwXyZjAKdn77GQRvVmxteGvrw5/phMOCM18HMOF715gx0lbA6/Dp9rZz7k8z2TdSSuUCIxGGROM/Pf5ypV8692tla4GXXaZwZItW8MJJDqqp7RWOiPlxl/l+x1iQcwQFyxHDaH0seUCbDErXhHtBYLZi6rmkWU8xNtcs42grflOxm+U9r9Tuh0mGz1qZE6IsMx7Do5lInYguNCnC8jZWr66lQq5RYsW+BuKIMfSdzWmFNKZcXPD6yrl1XD7db5umAPD0WgniaNPytiZO/tPuFNScw6Sxkv5dIqg6CK7WTOCaK2oVDHR3n7FMmVoJE1WdupcAtvdkDQR9S7LFfu/E=
+  app: is-it-sweater-weather
+  on:
+    branch: main
+  run: rails db:migrate
