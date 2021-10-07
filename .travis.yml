@@ -1,13 +1,14 @@
 language: ruby
 rvm:
-- 2.7.2
+  - 2.7.2
 before_install:
-- gem install bundler
+  - gem install bundler
+  - VCR.turn_off!(:ignore_cassettes => true)
 addons:
   postgresql: 9.6
 script:
-- bundle exec rails db:{create,migrate} RAILS_ENV=test
-- bundle exec rspec
+  - bundle exec rails db:{create,migrate} RAILS_ENV=test
+  - bundle exec rspec
 app: is-it-sweater-weather
 true:
   branch: main
