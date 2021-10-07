@@ -1,26 +1,20 @@
 language: ruby
 rvm:
-  - 2.7.2
+- 2.7.2
 before_install:
-  - gem install bundler
+- gem install bundler
 addons:
   postgresql: 9.6
 script:
-  - bundle exec rails db:{create,migrate} RAILS_ENV=test
-  - bundle exec rspec
-# deploy:
-#   api_key:
-#     secure: QOlbw0olYp8yDpZdEfZyfF0AdjhqKrwzGXXoRayDh93CV5FmPyWth0HqvbN/69QYfhJPlFUvK4mGy9iE8t4aumE+gjLcbJcUo/7WITYZWLEbyuKGyslnH3w1hOUrfb05Uu2PsADBj2DUJrhDeErm3j+uSSJwRnRdqAkVhY1pYaHLeXT6LcW/QbZ823GRXy+wkpp5lu6QQfDIjdCoVAS92Jjjl/+5GKxv/BnDOD8mhLhoEdzR1GQTVY+eujcB/kG5PvvcHVJYKEPfEzyP9bjDo22+1qR1LfMaimAgTZpghqs1csRT5E7aOgUCLgxbF84Yt8yB4O00t82CoewfJIZkZS1hC9eRHPGuWEJ8xq2xfL1zZhFz3k8fbA5pFbsQrWmrslNFwMvUnz7xSFa6Vqps9V9dQiFCSHhxBa/0X0F6ZJQKjHAEgPkRsLJPM6FqVAeykcYaCS3miypdprXbO816zlwGineg0wD2WLFI4V8z+CJkUlP3/TRTfKLYAb3hOdVzSd9lOo2YXyFj2CoumG9Q9YVe+k2+Q3ADt5JZLK6R91FUMX88Pi9llKf5p5GQl10uKgMUjXDvqZVXRKHBUN8Swaa3h+PNJH1luytxhuW15U4d1NqURunMvCU2MXGql2PZB3spn+Z8tiJECuARUX5SVW48cc7CUb+hbVICLk1uHDo=
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
 app: is-it-sweater-weather
-on:
+true:
   branch: main
 run: rails db:migrate
 env:
   global:
     secure: mWCxDLz1NGWdNty+Th21DXt7w88pDGvtzO94mL/en9Bej5+ayQI7haWunGBNiWpaSQUekNISbHKbOs1fcvpwO6LinaE2dNx8PTgLowSAzc7tAXtidpkm1nk7TJbItppsqX4W5JCfcb/OgxvrscW20hKvUeqa7eLZxfkEZ36xm1StysAWXSE36kkdVd4dDBkZEUDXW3urWLQU8wb8N10KMIrUF5wCxtBeYhI2XLBeiEhyxgTgR1V24PrlFQ7nGytWTwF9OZFzb6rp9rQ498MNfBBy+QmDiv2tcsOqrmFSAGWxcoFFbtnyrXhVRlKm9mHS5TMTq2oUETivcFB97untG5IrW3CsMgrCQluUt1T8b0BUboO2bZgzpAzHl0oC0pGH4o3LZ39NM4bGlYJpP27xTnLAqEyuFPZx3ad1BHDucQ15RdrIKIwEfB+bhFfV/acFJ0rwxl7k3/7Wp1OGPq5p7jYraQru+/oUMi8XAsDv1ftdpjTzJv6CrJHAF0Obwprv8YR1dr3UKjhYFtrcsKK4BCu5iGSmB7Gt3F+gkF+pJ4HFQ+Qx9i1UA2+2X+MKwfLwEHTTsyiCPp/PsCfDU9oA3pFSYPfDKRmh4M+zUzz2aH3xVy3sO9H9kmUVhDnC08TsoR78YRKxsEXY0iTvSWHEtYgrg05EGMdqtb80A4nD0ac=
-
-    map_key: nI0sAt1EZnupuOPKHTwClBVaNmQ8vgql
-
-    weather_key: 4c2d0d778c968cc65fbea5fe9cf02677
-
-    image_access_key: b-Ih-kYLMOoItCtm7hK3IrKSn-UVlfmz_0YSI2UIB-8
+deploy:
+  api_key:
+    secure: wTmS8S05JFNamzXiFJmFdD+ISN/r9PdjMC9Ru8e5h4GKcu/A6jZzfUYhFJzZABTPRcFGhwBHv12zYRSpt5H4l3kXdz0ptUJR5QMrU4h4x8Y/bcK0t/jyAHcn/d3zpylsQVM+gwglkyQHPNFTasGn9tsyQmpllrOC6AdbTrslHUO6hnb0G+YAYCjXozeYvETLM/xfEhWdO44UVK9inQd7kfzbzT/6Y832Po3003ls1jV+0DzGDA6PIPGrf3cjN+Kr2IHEZgXEnuPVnXxsL03AICBHVSx34LV8LOIJUVCsSnaE/CIZce2WVKDvtoJ2RUK99+BAyDwmpswmJidbQvxFm/7qwXyZjAKdn77GQRvVmxteGvrw5/phMOCM18HMOF715gx0lbA6/Dp9rZz7k8z2TdSSuUCIxGGROM/Pf5ypV8692tla4GXXaZwZItW8MJJDqqp7RWOiPlxl/l+x1iQcwQFyxHDaH0seUCbDErXhHtBYLZi6rmkWU8xNtcs42grflOxm+U9r9Tuh0mGz1qZE6IsMx7Do5lInYguNCnC8jZWr66lQq5RYsW+BuKIMfSdzWmFNKZcXPD6yrl1XD7db5umAPD0WgniaNPytiZO/tPuFNScw6Sxkv5dIqg6CK7WTOCaK2oVDHR3n7FMmVoJE1WdupcAtvdkDQR9S7LFfu/E=
