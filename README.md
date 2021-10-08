@@ -125,7 +125,7 @@ The Is It Sweater Time? API can be used to retrieve information about current, d
 
 ### Endpoint Documentation
 
-[Register User Endpoint](localhost:3000/api/v1/users)
+[Register User Endpoint](is-it-sweater-weather.herokuapp.com/api/v1/users)
 <br>
 Request:
 `/api/v1/users`
@@ -155,7 +155,7 @@ Response:
 }
 ```
 
-[Session Endpoint](localhost:3000/api/v1/sessions)
+[Session Endpoint](is-it-sweater-weather.herokuapp.com/api/v1/sessions)
 <br>
 Request:
 `/api/v1/sessions`
@@ -185,7 +185,7 @@ Response:
 }
 ```
 
-[Background Image Endpoint](localhost:3000/api/v1/backgrounds)
+[Background Image Endpoint](is-it-sweater-weather.herokuapp.com/api/v1/backgrounds)
 <br>
 Request:
 `/api/v1/backgrounds`<br>
@@ -213,7 +213,7 @@ Response:
 }
 ```
 
-[Forecast Endpoint](localhost:3000/api/v1/forecast)
+[Forecast Endpoint](is-it-sweater-weather.herokuapp.com/api/v1/forecast)
 <br>
 Request:
 `/api/v1/forecast` <br>
@@ -341,7 +341,7 @@ Response:
 }
 ```
 
-[Road Trip Endpoint](localhost:3000/api/v1/road_trip)
+[Road Trip Endpoint](is-it-sweater-weather.herokuapp.com/api/v1/road_trip)
 <br>
 Request:
 `/api/v1/backgrounds`<br>
