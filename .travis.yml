@@ -7,7 +7,6 @@ addons:
   postgresql: 9.6
 script:
   - bundle exec rails db:{create,migrate} RAILS_ENV=test
-  - VCR.turn_off!
   - bundle exec rspec
 app: is-it-sweater-weather
 true:
