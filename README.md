@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/github/forks/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="forks_badge">
   </a>
   <a href="https://github.com/Jtpiland/is_it_sweater_time/stargazers">
-    <img src="https://img.shields.io/github/stars/Jtpiland/is_it_sweater_timestyle=for-the-badge" alt="stars_badge">
+    <img src="https://img.shields.io/github/stars/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="stars_badge">
   </a>
   <a href="https://github.com/Jtpiland/is_it_sweater_time/issues">
     <img src="https://img.shields.io/github/issues/Jtpiland/is_it_sweater_time?style=for-the-badge" alt="issues_badge">
